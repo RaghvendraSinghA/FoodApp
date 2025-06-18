@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Add Food</title>
+</head>
+<body>
+  <h1>Add Food Item</h1>
+  <form id="foodForm" enctype="multipart/form-data">
+    <label>
+      Name:
+      <input type="text" name="name" required />
+    </label><br/><br/>
+
+    <label>
+      Description:
+      <textarea name="description" required></textarea>
+    </label><br/><br/>
+
+    <label>
+      Price:
+      <input type="number" name="price" required />
+    </label><br/><br/>
+
+    <label>
+      Category:
+      <input type="text" name="category" required />
+    </label><br/><br/>
+
+    <label>
+      Image:
+      <input type="file" name="image" accept="image/*" required />
+    </label><br/><br/>
+
+    <button type="submit">Add Food</button>
+  </form>
+      <button onclick="fetchMongo()" >GET MongoData</button>
+      <button onclick="removeMongo()">remove item</button>
+
+  <p id="response"></p>
+
+  <script>
+    const form = document.getElementById('foodForm');
+    const responseEl = document.getElementById('response');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const formData = new FormData(form);
+
+      try {
+        const res = await fetch('http://localhost:4000/api/food/add', {
+          method: 'POST',
+          body: formData
+        });
+
+        const data = await res.json();
+        console.log(data)
+        responseEl.textContent = JSON.stringify(data, null, 2);
+      } catch (err) {
+        console.error(err);
+        responseEl.textContent = 'Error uploading food';
+      }
+    });
+
+    async function fetchMongo(){
+      try {
+        const res = await fetch('http://localhost:4000/api/food/list', {
+          method: 'GET',
+        })
+        const data = await res.json();
+        console.log(data)
+      } catch (err) {
+        console.error(err);
+      }
+  }
+
+ 
+  async function removeMongo() {
+  try {
+    const res = await fetch('http://localhost:4000/api/food/remove', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ id: "67fbdc8d01ee0b3c49acd4fc" })
+    });
+
+    const data = await res.json();
+    console.log(data);
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+
+  //id="67fb9a93415687c9ad97b4b7"
+  </script>
+</body>
+</html>
