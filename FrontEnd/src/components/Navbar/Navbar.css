@@ -170,18 +170,35 @@
 
 @media screen and (max-width:785px){
     .search-icon-card{
-    position:absolute;
-    top:5vh;
-    left:-30vw;
+    position:fixed;
+    top:10vh;
+    left:20vw;
     z-index:1;
 }
 }
 
 @media screen and (max-width:415px){
     .search-icon-card{
-    position:absolute;
-    top:6vh;
-    left:-22vw;
+    position:fixed;
+    top:10vh;
+    left:13vw;
+    z-index:1;
+}
+}
+
+@media screen and (max-width:400px){
+    .search-icon-card{
+    position:fixed;
+    top:10vh;
+    left:11vw;
+    z-index:1;
+}
+}
+@media screen and (max-width:370px){
+    .search-icon-card{
+    position:fixed;
+    top:10vh;
+    left:9vw;
     z-index:1;
 }
 }
