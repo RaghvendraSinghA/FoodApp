@@ -163,8 +163,8 @@
 
 .search-icon-card{
     position:absolute;
-    top:-8px;
-    left:-310px;
+    top:40px;
+    left:-290px;
     z-index:1;
 }
 
@@ -173,6 +173,15 @@
     position:absolute;
     top:5vh;
     left:-30vw;
+    z-index:1;
+}
+}
+
+@media screen and (max-width:415px){
+    .search-icon-card{
+    position:absolute;
+    top:6vh;
+    left:-22vw;
     z-index:1;
 }
 }
