@@ -35,13 +35,17 @@ const StoreContextProvider=(props)=>{
     useEffect(()=>{
         if(localStorage.getItem("token")){
             setToken(localStorage.getItem("token"))
-        
         }
+    },[])
+
+    useEffect(()=>{
         getCartItems()
     },[token])
 
     useEffect(()=>{
+        if(token){
         setLocalCart()
+        }
     },[cartItems])
 
     const setLocalCart=()=>{
