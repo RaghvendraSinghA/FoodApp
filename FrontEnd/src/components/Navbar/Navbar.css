@@ -8,7 +8,7 @@
     cursor:pointer;
 }
 .navbar .logo{
-    width:150px;
+    width:100px;
 }
 
 .navbar-menu{
@@ -30,15 +30,17 @@
     background:transparent;
     font-size:16px;
     color:#49557e;
-    border:1px solid tomato;
+    border:1px solid black;
     padding:10px 30px;
-    border-radius:50px;
+    border-radius:10px;
     cursor:pointer;
     transition:0.2s;
 
 }
 .navbar button:hover{
-    background-color:#fff4f2;
+    background-color:#1e1919;
+    color:white;
+    border:1px solid rgb(210, 185, 23);
 }
 
 .navbar .active{
@@ -54,11 +56,11 @@
 }
 .navbar-search-icon .dot{
     position:absolute;
-    min-width:10px;
-    min-height:10px;
+    min-width:12px;
+    min-height:12px;
     background-color:tomato;
-    border-radius:5px;
-    top:-4px;
+    border-radius:50%;
+    top:-15px;
     right:-6px;
 }
 
@@ -148,6 +150,9 @@
     .navbar-menu{
         display:none;
     }
+    .navbar .logo{
+        width:50px;
+    }
 }
 
 .search-icon{
@@ -158,7 +163,7 @@
 
 .search-icon-card{
     position:absolute;
-    top:-10px;
+    top:-8px;
     left:-310px;
     z-index:1;
 }
@@ -170,4 +175,14 @@
     left:-30vw;
     z-index:1;
 }
+}
+
+.navbar-right img{
+    height:2.2rem;
+    width:2.2rem;
+}
+
+.navbar-profile .profile{
+    height:50px;
+    width:50px;
 }

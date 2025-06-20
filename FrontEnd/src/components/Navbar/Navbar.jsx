@@ -29,9 +29,9 @@ const Navbar = ({setShowLogin})=>{
             </ul>
             <div className="navbar-right">
                 <div className="search-icon">
-                <div className='search-icon-card'>
+                   <div className='search-icon-card'>
                     {search&&<Search />}
-                </div>    
+                   </div>    
                 <img onClick={()=>setSearch(prev=>!prev)} src={assets.search_icon} alt="icon" />
                 </div>
 
@@ -43,7 +43,7 @@ const Navbar = ({setShowLogin})=>{
 
 
                 {!token?<button onClick={()=>setShowLogin(true)} className="btn">sign-in</button>:<div className="navbar-profile">
-                         <img src={assets.profile_icon} alt="" />
+                         <img className="profile" src={assets.profile_icon} alt="" />
                          <ul className="nav-profile-dropdown">
                            <li><img src={assets.bag_icon} alt="" /><p>Orders</p></li>
                            <hr />
