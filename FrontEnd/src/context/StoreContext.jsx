@@ -10,7 +10,7 @@ const StoreContextProvider=(props)=>{
     const itemsRef=useRef({})
 
     const addToCart=(itemId)=>{
-        if(!cartItems[itemId]){
+        if(!cartItems||!cartItems[itemId]){
             setCartItems(prev=>({...prev,[itemId]:1}))
         }else{
             setCartItems(prev=>({...prev,[itemId]:prev[itemId]+1}))
