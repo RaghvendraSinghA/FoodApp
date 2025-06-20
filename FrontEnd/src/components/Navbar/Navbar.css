@@ -149,3 +149,25 @@
         display:none;
     }
 }
+
+.search-icon{
+    display:flex;
+    justify-content:space-between;
+    position:relative;
+}
+
+.search-icon-card{
+    position:absolute;
+    top:-10px;
+    left:-310px;
+    z-index:1;
+}
+
+@media screen and (max-width:785px){
+    .search-icon-card{
+    position:absolute;
+    top:5vh;
+    left:-30vw;
+    z-index:1;
+}
+}

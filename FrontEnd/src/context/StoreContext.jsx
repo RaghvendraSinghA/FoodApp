@@ -1,15 +1,15 @@
-import {createContext,useState,useEffect} from 'react'
+import {createContext,useState,useEffect,useRef} from 'react'
 import {food_list} from "../assets/assets.js"
 
 export const StoreContext=createContext(null)
 
 const StoreContextProvider=(props)=>{
     const[cartItems,setCartItems]=useState({})
-    const url='https://food-app-backend-blush.vercel.app'
+    const url='http://localhost:4000'
     const [token,setToken]=useState("")
+    const itemsRef=useRef({})
 
     const addToCart=(itemId)=>{
-        //cartItmes is like hashmap and we using itemId as key
         if(!cartItems[itemId]){
             setCartItems(prev=>({...prev,[itemId]:1}))
         }else{
@@ -24,7 +24,7 @@ const StoreContextProvider=(props)=>{
     const getTotalCartAmount=()=>{
         let total=0
         for(const item in cartItems){
-            if(cartItems[item]>0){          //this checks if item exist in cartItems bcoz it is like hashmap.we increase decrease the quantity.So item can exist but with 0 quantity.
+            if(cartItems[item]>0){
                 let iteminfo=food_list.find((product)=>product._id===item)
                 total=total+iteminfo.price*cartItems[item]
             }
@@ -35,16 +35,16 @@ const StoreContextProvider=(props)=>{
     useEffect(()=>{
         if(localStorage.getItem("token")){
             setToken(localStorage.getItem("token"))
-            getCartItems() //It loads data from localStorage and sets in cartItems
-        }
         
-    },[]) //array was empty and getCart was outside.
+        }
+        getCartItems()
+    },[token])
 
     useEffect(()=>{
-        setCartItemsInLocalStorage() //it sets cartItems in localStorage.
+        setLocalCart()
     },[cartItems])
 
-    const setCartItemsInLocalStorage=()=>{
+    const setLocalCart=()=>{
         localStorage.setItem("cartItems", JSON.stringify(cartItems))
     }
 
@@ -53,11 +53,8 @@ const StoreContextProvider=(props)=>{
         setCartItems(response)
     }
 
-
-
-
     const contextValue={
-        food_list,cartItems,setCartItems,addToCart,removeFromCart,getTotalCartAmount,url,token,setToken
+        food_list,cartItems,setCartItems,addToCart,removeFromCart,getTotalCartAmount,url,token,setToken,itemsRef
     }
 
     return(
