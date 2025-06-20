@@ -189,7 +189,7 @@
 @media screen and (max-width:400px){
     .search-icon-card{
     position:fixed;
-    top:10vh;
+    top:20vw;
     left:11vw;
     z-index:1;
 }
